@@ -1,0 +1,14 @@
+.page-header {
+  @include outer-container;
+  max-width: 100%;
+  aside {
+    @include shift(2);
+    @include span-columns(2);
+  }
+  nav {
+    @include span-columns(8);
+    li {
+      float:left;
+    }
+  }
+}
