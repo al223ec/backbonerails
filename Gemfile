@@ -8,7 +8,11 @@ gem 'sqlite3'
 gem 'thin'
 # oklart hur bra denna är https://github.com/sstephenson/ruby-ejs är inte uppdaterad på 2 år
 gem 'ejs'
+gem 'rabl'
+gem 'oj'
+gem 'gon'
 
+gem 'responders',           '~> 2.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

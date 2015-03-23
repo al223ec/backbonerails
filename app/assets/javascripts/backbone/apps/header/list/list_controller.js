@@ -6,7 +6,6 @@
             listHeader: function(){
                 var links = App.request("header:entities");
                 var headerView = this.getHeaderView(links);
-                window.links = links;
                 App.headerRegion.show(headerView);
             },
             //Oklart om denna behöver vara på controllern

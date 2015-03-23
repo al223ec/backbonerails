@@ -4,12 +4,14 @@
 
       Show.Controller = {
           showFooter: function(){
-            var footerView = this.getFooterView();
+            var currentUser = App.request("get:current:user");
+            var footerView = this.getFooterView(currentUser);
             App.footerRegion.show(footerView);
-
           },
-          getFooterView:  function(){
-            return new Show.Footer();
+          getFooterView:  function(currentUser){
+            return new Show.Footer({
+              model: currentUser
+            });
           }
       }
     });
