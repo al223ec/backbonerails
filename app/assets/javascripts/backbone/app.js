@@ -23,16 +23,19 @@
             footerRegion: "#footer-region"
         });
 
+        //OBS ADDINITIALIZER TAS BORT I NÄSTA MAJOR RELEASE!!
         App.addInitializer(function(){
           App.module("HeaderApp").start();
           App.module("FooterApp").start();
         });
 
-        App.on("initialize:after", function() {
+        App.on("start", function() {
             if (Backbone.history) {
+                console.log("Backbone.history started");
                 Backbone.history.start();
             }
         });
+
         return App;
     }(Backbone, Marionette);
 }).call(this);
