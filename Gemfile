@@ -11,6 +11,7 @@ gem 'ejs'
 gem 'rabl'
 gem 'oj'
 gem 'gon'
+gem 'js-routes'
 
 gem 'responders',           '~> 2.0'
 # Use SCSS for stylesheets

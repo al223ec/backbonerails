@@ -11,16 +11,20 @@
         var API = {
             getHeaders: function() {
                 return new Entities.HeaderCollection([{
-                    name: "Users"
+                    name: "Users",
+                    url: Routes.users_path()
                 }, {
-                    name: "Leads"
+                    name: "Leads",
+                    url: Routes.leads_path()
                 }, {
-                    name: "Appointments"
+                    name: "Appointments",
+                    url: "/appointments"
                 }]);
             }
         }
         App.reqres.setHandler("header:entities", function() {
-            return API.getHeaders();
+            var headers = API.getHeaders();
+            return headers;
         });
     });
 }).call(this);

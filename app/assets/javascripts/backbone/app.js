@@ -2,16 +2,18 @@
 (function() {
     this.Demo = function(Backbone, Marionette) {
         var App = new Marionette.Application();
-
         // var app = Marionette.Application.extend({
         //   initialize: function(options) {
         //     console.log('My container:', options.container);
         //   }
         // });
+        App.rootRoute = Routes.users_path();
+
         App.reqres.setHandler("get:current:user", function(){
             return App.currentUser;
         })
 
+        // Detta sk ske i
         App.on("before:start", function(options){
             this.currentUser = App.request("set:current:user", options.currentUser);
         });
@@ -31,8 +33,9 @@
 
         App.on("start", function() {
             if (Backbone.history) {
-                console.log("Backbone.history started");
                 Backbone.history.start();
+                var navigate = App.getCurrentRoute() == "" ? App.rootRoute : App.getCurrentRoute();
+                App.navigate(navigate, {trigger: true});
             }
         });
 

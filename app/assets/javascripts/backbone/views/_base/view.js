@@ -7,6 +7,15 @@
             templateHelpers: function() {
                 return {
                     currentUser: App.request("get:current:user").toJSON(),
+                    linkTo: function(name, url, options) {
+                        options = options ? options : {};
+                        _.defaults(options, {
+                            external: false
+                        });
+
+                        url = options.external ? url : '#' + url;
+                        return '<a href="' + url + '">' + name + '</a>';
+                    }
                 }
             }
         });

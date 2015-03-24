@@ -1,6 +1,7 @@
 "use strict";
 (function() {
     Demo.module("UsersApp", function(UsersApp, App, Backbone, Marionette, $, _) {
+        // Är det vettigt att ha routingen här??
         UsersApp.Router = Marionette.AppRouter.extend({
             appRoutes: {
                 "users" : "listUsers"
@@ -8,7 +9,7 @@
         })
         var API = {
             listUsers: function(){
-                console.log("listUsers");
+                UsersApp.List.Controller.listUsers();
             }
         }
 
