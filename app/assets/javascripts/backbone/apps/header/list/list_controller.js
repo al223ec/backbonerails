@@ -8,7 +8,6 @@
                 var headerView = this.getHeaderView(links);
                 App.headerRegion.show(headerView);
             },
-            //Oklart om denna behöver vara på controllern
             getHeaderView: function(links){
                 return new List.Headers({
                     collection: links

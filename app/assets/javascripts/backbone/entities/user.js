@@ -2,15 +2,15 @@
 (function() {
     Demo.module("Entities", function(Entities, App, Backbone, Marionette, $, _) {
         Entities.User = Entities.Model.extend({
-            // Modelmethods
+            urlRoot: function(){
+                return Routes.users_path();
+            }
         });
         Entities.UsersCollection = Entities.Collection.extend({
             model: Entities.User,
             url: function(){
                 return Routes.users_path();
             }
-
-            // Collectionmethods
         });
 
         var API = {
@@ -20,10 +20,19 @@
             getUserEntities: function(callback){
                 var users = new Entities.UsersCollection();
                 users.fetch({
-                   success: function(){
-                    callback(users);
-                   }
+                    reset: true, //Backbone om reset eventet ska triggas
+                    success: function(){
+                        callback(users);
+                    }
                 });
+            },
+            getUser: function(id){
+                var user = new Entities.User({
+                    id: id
+                });
+                user.fetch()
+                console.log(user);
+                return user;
             }
         }
 
@@ -33,6 +42,9 @@
 
         App.reqres.setHandler("user:entities", function(callback){
             return API.getUserEntities(callback);
+        });
+        App.reqres.setHandler("user:entity", function(id){
+            return API.getUser(id);
         });
     });
 }).call(this);

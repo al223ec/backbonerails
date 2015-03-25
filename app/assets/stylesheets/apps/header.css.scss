@@ -1,14 +1,29 @@
 .page-header {
   @include outer-container;
   max-width: 100%;
+  max-height: $nav-height;
+  background-color: $black;
+  color: white;
+  a {
+    color: white;
+  }
   aside {
-    @include shift(2);
-    @include span-columns(2);
+    @include shift(1);
+    @include span-columns(1);
+    img {
+      max-height: $nav-height;
+    }
   }
   nav {
-    @include span-columns(8);
+    @include shift(6);
+    @include span-columns(4);
     li {
-      float:left;
+      float: left;
+      padding-left: 15px;
+      padding-right: 15px;
+      &:before {
+        content: "| ";
+      }
     }
   }
 }

@@ -1,12 +1,10 @@
 "use strict";
 (function() {
     Demo.module("Entities", function(Entities, App, Backbone, Marionette, $, _) {
-        Entities.Header = Entities.Model.extend({
-            // Modelmethods
-        });
+        //Detta bör döpas om till NavigationLinks eller något liknande
+        Entities.Header = Entities.Model.extend({});
         Entities.HeaderCollection = Entities.Collection.extend({
             model: Entities.Header
-            // Collectionmethods
         });
         var API = {
             getHeaders: function() {
@@ -16,10 +14,8 @@
                 }, {
                     name: "Leads",
                     url: Routes.leads_path()
-                }, {
-                    name: "Appointments",
-                    url: "/appointments"
-                }]);
+                }
+                ]);
             }
         }
         App.reqres.setHandler("header:entities", function() {

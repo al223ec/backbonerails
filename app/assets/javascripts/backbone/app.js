@@ -2,11 +2,7 @@
 (function() {
     this.Demo = function(Backbone, Marionette) {
         var App = new Marionette.Application();
-        // var app = Marionette.Application.extend({
-        //   initialize: function(options) {
-        //     console.log('My container:', options.container);
-        //   }
-        // });
+
         App.rootRoute = Routes.users_path();
 
         App.reqres.setHandler("get:current:user", function(){
@@ -26,17 +22,19 @@
         });
 
         //OBS ADDINITIALIZER TAS BORT I NÄSTA MAJOR RELEASE!!
-        App.addInitializer(function(){
-          App.module("HeaderApp").start();
-          App.module("FooterApp").start();
-        });
+        // App.addInitializer(function(){
+        //     App.module("HeaderApp").start();
+        //     App.module("FooterApp").start();
+        // });
 
         App.on("start", function() {
-            if (Backbone.history) {
-                Backbone.history.start();
-                var navigate = App.getCurrentRoute() == "" ? App.rootRoute : App.getCurrentRoute();
-                App.navigate(navigate, {trigger: true});
-            }
+            console.log("app:start");
+            App.module("HeaderApp").start();
+            App.module("FooterApp").start();
+
+            App.startHistory();
+            var route = App.getCurrentRoute() ? App.getCurrentRoute() : App.rootRoute;
+            App.navigate(route, {trigger: true});
         });
 
         return App;
